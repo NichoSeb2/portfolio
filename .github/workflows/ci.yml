@@ -17,7 +17,7 @@ permissions:
 
 env:
   BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
-  REGISTRY: registry.polliotti.com
+  REGISTRY: registry.play-for-eternity.net
 
 jobs:
   set-vars:
