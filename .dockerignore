@@ -1,0 +1,37 @@
+###> symfony/framework-bundle ###
+/.env.*
+/config/secrets/prod/prod.decrypt.private.php
+/public/bundles/
+/var/
+/vendor/
+###< symfony/framework-bundle ###
+
+###> symfony/phpunit-bridge ###
+.phpunit.result.cache
+/phpunit.xml
+/coverage
+###< symfony/phpunit-bridge ###
+
+###> docker ###
+/docker/**
+/docker/**/docker-compose.override.yml
+!/docker/production/000-public.conf
+!/docker/production/php.ini
+###< docker ###
+
+###> npm ###
+/node_modules/
+###< npm ###
+
+###> friends-of-behat/symfony-extension ###
+/behat.yml
+###< friends-of-behat/symfony-extension ###
+
+###> phpstan/phpstan ###
+phpstan.neon
+###< phpstan/phpstan ###
+
+###> friendsofphp/php-cs-fixer ###
+/.php-cs-fixer.php
+/.php-cs-fixer.cache
+###< friendsofphp/php-cs-fixer ###

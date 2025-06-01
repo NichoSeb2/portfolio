@@ -1,0 +1,10 @@
+parameters:
+	level: 6
+	paths:
+		- bin/
+		- config/
+		- migrations/
+		- public/
+		- src/
+		- tests/
+	treatPhpDocTypesAsCertain: false

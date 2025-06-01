@@ -1,0 +1,183 @@
+name: CI Test and Build
+
+on:
+  workflow_dispatch:
+  release:
+    types: [published]
+  pull_request:
+    branches:
+      - '**'
+  # push:
+  #   branches:
+  #     - '**'
+
+permissions:
+  contents: read
+  packages: write
+
+env:
+  BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
+  REGISTRY: ghcr.io
+
+jobs:
+  set-vars:
+    runs-on: ubuntu-22.04
+
+    name: Set variables for CI
+
+    outputs:
+      branch: ${{ steps.branch.outputs.branch }}
+      tags: ${{ steps.vars.outputs.tags }}
+      sha_short: ${{ steps.vars.outputs.sha_short }}
+      repository: ${{ steps.vars.outputs.repository }}
+      arch: ${{ steps.vars.outputs.arch }}
+      docker_tags_primary: ${{ steps.docker.outputs.docker_tags_primary }}
+      docker_tags_secondary: ${{ steps.docker.outputs.docker_tags_secondary }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Extract some variables
+        id: vars
+        run: |
+          echo "tags=$(git describe --tags HEAD)" >> $GITHUB_OUTPUT
+          echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+          echo "arch=$(dpkg --print-architecture)" >> $GITHUB_OUTPUT
+          echo "repository=${GITHUB_REPOSITORY,,}" >> $GITHUB_OUTPUT
+
+      - name: Replace / by - in branch name
+        id: branch
+        run: echo "branch=${BRANCH_NAME////-}" >> $GITHUB_OUTPUT
+
+      - name: Create Docker tags
+        id: docker
+        run: |
+          if [ ${{ github.event_name == 'release' }} == true ]; then tags="latest"; else tags="canary"; fi
+          echo "docker_tags_primary=$tags" >> $GITHUB_OUTPUT
+          if [ ${{ github.event_name == 'release' }} == true ]; then tags="${{ steps.vars.outputs.tags }}"; else tags="${{ steps.branch.outputs.branch }}-${{ steps.vars.outputs.sha_short }}"; fi
+          echo "docker_tags_secondary=$tags" >> $GITHUB_OUTPUT
+
+      - name: Display the extracted variable
+        run: |
+          echo "branch: ${{ steps.branch.outputs.branch }}"
+          echo "tags: ${{ steps.vars.outputs.tags }}"
+          echo "sha_short: ${{ steps.vars.outputs.sha_short }}"
+          echo "arch: ${{ steps.vars.outputs.arch }}"
+          echo "repository: ${{ steps.vars.outputs.repository }}"
+          echo "docker_tags_primary: ${{ steps.docker.outputs.docker_tags_primary }}"
+          echo "docker_tags_secondary: ${{ steps.docker.outputs.docker_tags_secondary }}"
+
+  tests:
+    runs-on: ubuntu-22.04
+
+    strategy:
+      matrix:
+        php-versions: ['8.3']
+
+    name: Tests with PHP ${{ matrix.php-versions }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup PHP ${{ matrix.php-versions }}
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-versions }}
+          tools: composer:v2.8
+          extensions: sqlite3, mysqli, pdo_mysql, opcache, intl, xdebug, yaml, zip, apcu
+
+      - name: Copy .env.test.local
+        run: php -r "file_exists('.env.test.local') || copy('.env.test', '.env.test.local');"
+
+      - name: Cache Composer packages
+        id: composer-cache
+        uses: actions/cache@v4
+        with:
+          path: dispatcher/vendor
+          key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-php-
+
+      - name: Install Dependencies
+        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+
+      - name: Create Database
+        run: |
+          mkdir -p data
+          touch data/database.sqlite
+
+      # - name: Execute tests (Unit and e2e tests) via PHPUnit
+      #   env:
+      #     DATABASE_URL: sqlite:///%kernel.project_dir%/data/database.sqlite
+      #   run: vendor/bin/phpunit --path-coverage
+
+      # - name: Execute tests (Feature tests) via Behat
+      #   env:
+      #     DATABASE_URL: sqlite:///%kernel.project_dir%/data/database.sqlite
+      #   run: vendor/bin/behat --xdebug
+
+      # - name: Code coverage report
+      #   uses: irongut/CodeCoverageSummary@v1.3.0
+      #   with:
+      #     filename: dispatcher/coverage/**/cobertura-coverage.xml
+      #     badge: false
+      #     fail_below_min: true
+      #     format: text
+      #     hide_branch_rate: false
+      #     hide_complexity: true
+      #     indicators: true
+      #     output: console
+      #     thresholds: '75 90'
+
+      - name: Run PHP Coding Standards Fixer
+        run: php vendor/bin/php-cs-fixer check --diff
+
+      - name: Run PHPStan
+        run: php vendor/bin/phpstan analyze
+
+  build-docker:
+    runs-on: ubuntu-22.04
+
+    permissions:
+      contents: read
+      packages: write
+
+    name: Build and push docker image
+
+    needs:
+      - set-vars
+      - tests
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+        with:
+          cache-image: false
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+        with:
+          install: true
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push - ${{ needs.set-vars.outputs.repository }}:${{ needs.set-vars.outputs.docker_tags_secondary }}
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ./docker/production/Dockerfile
+          platforms: linux/amd64
+          push: true
+          tags: ${{ env.REGISTRY }}/${{ needs.set-vars.outputs.repository }}:${{ needs.set-vars.outputs.docker_tags_primary }},${{ env.REGISTRY }}/${{ needs.set-vars.outputs.repository }}:${{ needs.set-vars.outputs.docker_tags_secondary }}
+          cache-from: type=local,src=/tmp/.buildx-cache/${{ needs.set-vars.outputs.repository }}
+          cache-to: type=local,dest=/tmp/.buildx-cache/${{ needs.set-vars.outputs.repository }}
