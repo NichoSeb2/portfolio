@@ -70,10 +70,10 @@ RUN a2ensite 000-public.conf
 RUN useradd container -u 1000 -m
 
 RUN echo 'alias sc="php bin/console"' >> /home/container/.bashrc
-RUN echo 'alias test:unit="npm run test:unit"' >> /home/container/.bashrc
-RUN echo 'alias test:feature="npm run test:feature"' >> /home/container/.bashrc
-RUN echo 'alias code:check="npm run code:check"' >> /home/container/.bashrc
-RUN echo 'alias code:fix="npm run code:fix"' >> /home/container/.bashrc
-RUN echo 'alias code:analyze="npm run code:analyze"' >> /home/container/.bashrc
+# RUN echo 'alias test:unit="npm run test:unit"' >> /home/container/.bashrc
+# RUN echo 'alias test:feature="npm run test:feature"' >> /home/container/.bashrc
+RUN echo 'alias code:check="php vendor/bin/php-cs-fixer check --diff"' >> /home/container/.bashrc
+RUN echo 'alias code:fix="php vendor/bin/php-cs-fixer fix"' >> /home/container/.bashrc
+RUN echo 'alias code:analyze="php vendor/bin/phpstan analyze"' >> /home/container/.bashrc
 
 WORKDIR /var/www/html

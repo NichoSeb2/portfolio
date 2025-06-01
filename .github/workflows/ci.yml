@@ -131,11 +131,11 @@ jobs:
       #     output: console
       #     thresholds: '75 90'
 
-      # - name: Run PHP Coding Standards Fixer
-      #   run: vendor/bin/php-cs-fixer check
+      - name: Run PHP Coding Standards Fixer
+        run: php vendor/bin/php-cs-fixer check --diff
 
-      # - name: Run PHPStan
-      #   run: cp ./phpstan.dist.neon ./phpstan.neon && vendor/bin/phpstan analyze -c phpstan.neon
+      - name: Run PHPStan
+        run: php vendor/bin/phpstan analyze
 
   build-docker:
     runs-on: ubuntu-22.04
