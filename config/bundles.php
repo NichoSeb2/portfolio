@@ -11,6 +11,7 @@ use Symfony\Bundle\TwigBundle\TwigBundle;
 use Symfony\Bundle\WebProfilerBundle\WebProfilerBundle;
 use Symfony\UX\StimulusBundle\StimulusBundle;
 use Symfony\UX\Turbo\TurboBundle;
+use Symfonycasts\TailwindBundle\SymfonycastsTailwindBundle;
 use Twig\Extra\TwigExtraBundle\TwigExtraBundle;
 
 return [
@@ -26,4 +27,5 @@ return [
 	SecurityBundle::class => ['all' => true],
 	MonologBundle::class => ['all' => true],
 	MakerBundle::class => ['dev' => true],
+	SymfonycastsTailwindBundle::class => ['all' => true],
 ];
