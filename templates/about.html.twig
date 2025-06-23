@@ -1,0 +1,48 @@
+<section id="about" class="py-16 bg-gray-50">
+	<div class="container mx-auto px-4">
+		<div class="text-center mb-12" style="opacity: 1; transform: none;">
+			<h2 class="text-3xl md:text-4xl font-bold mb-4">About Me</h2>
+			<div class="w-20 h-1 bg-primary mx-auto"></div>
+		</div>
+		<div class="flex flex-col md:flex-row items-center">
+			<div class="md:w-2/5 mb-8 md:mb-0" style="opacity: 1; transform: none;">
+				<div class="relative w-full max-w-md mx-auto">
+					<div class="absolute -inset-2 bg-primary rounded-lg opacity-10 blur-lg"></div>
+					<img src="{{ portraitPicture }}" alt="Portrait" class="rounded-xl shadow-lg w-full max-w-md mx-auto relative z-10">
+				</div>
+			</div>
+			<div class="md:w-3/5 md:pl-12" style="opacity: 1;">
+				<h3 class="text-2xl font-semibold mb-4" style="opacity: 1; transform: none;">{{ title }} based in {{ location }}</h3>
+				<p class="text-neutral mb-6" style="opacity: 1; transform: none;">{{ aboutText }}</p>
+				<div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6" style="opacity: 1; transform: none;">
+					<div>
+						<p class="font-medium">Name:</p>
+						<p class="text-neutral">{{ firstName }} {{ lastName }}</p>
+					</div>
+					<div>
+						<p class="font-medium">Email:</p>
+						<p class="text-neutral">{{ email }}</p>
+					</div>
+					<div>
+						<p class="font-medium">From:</p>
+						<p class="text-neutral">{{ location }}</p>
+					</div>
+					<div>
+						<p class="font-medium">Availability:</p>
+						<p class="text-neutral">{{ availability }}</p>
+					</div>
+				</div>
+				<div style="opacity: 1; transform: none;">
+					<button class="cursor-pointer inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 text-primary-foreground h-10 px-4 py-2 bg-primary hover:bg-primary/90">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download mr-2 h-4 w-4">
+							<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+							<polyline points="7 10 12 15 17 10"></polyline>
+							<line x1="12" x2="12" y1="15" y2="3"></line>
+						</svg>
+						Download CV
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

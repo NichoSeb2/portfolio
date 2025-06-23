@@ -1,0 +1,30 @@
+<section id="project" class="py-16 bg-gray-50">
+	<div class="container mx-auto px-4">
+		<div class="text-center mb-12" style="opacity: 1; transform: none;">
+			<h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-800">Featured Projects</h2>
+			<div class="w-20 h-1 bg-primary mx-auto"></div>
+		</div>
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" style="opacity: 1;">
+			{% for project in projects %}
+				<div style="opacity: 1; transform: none;">
+					<div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+						<div class="h-52 flex items-center justify-center overflow-hidden">
+							<img src="{{ project.picture }}" alt="">
+						</div>
+						<div class="p-6">
+							<h3 class="text-xl font-semibold mb-3 text-gray-800">{{ project.title }}</h3>
+							<div class="flex flex-wrap gap-2 mb-4">
+								{% for tech in project.techsUsed %}
+									<div class="inline-flex items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent hover:bg-secondary/80 bg-{{ tech.color }}-100 text-{{ tech.color }}-800 border-0 text-xs font-medium px-3 py-1">{{ tech.label }}</div>
+								{% endfor %}
+
+								<div class="inline-flex items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent hover:bg-secondary/80 bg-yellow-100 text-yellow-800 border-0 text-xs font-medium px-3 py-1">XXX</div>
+							</div>
+							<p class="text-gray-600 text-sm leading-relaxed">{{ project.description }}</p>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+</section>

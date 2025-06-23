@@ -1,0 +1,87 @@
+<section id="contact" class="py-16">
+	<div class="container mx-auto px-4">
+		<div class="text-center mb-12" style="opacity: 1; transform: none;">
+			<h2 class="text-3xl md:text-4xl font-bold mb-4">Get In Touch</h2>
+			<div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+			<p class="text-neutral max-w-xl mx-auto">Have a project in mind or want to know more about my services? Feel free to reach out!</p>
+		</div>
+		<div class="flex flex-col md:flex-row gap-12">
+			<div class="md:w-1/2" style="opacity: 1;">
+				<form class="space-y-6">
+					<div style="opacity: 1; transform: none;">
+						<div class="space-y-2">
+							<label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for=":r0:-form-item">Name</label><input class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm" placeholder="Your name" name="name" id=":r0:-form-item" aria-describedby=":r0:-form-item-description" aria-invalid="false" value=""><div data-lastpass-icon-root="" style="position: relative !important; height: 0px !important; width: 0px !important; float: left !important;"></div>
+						</div>
+					</div>
+					<div style="opacity: 1; transform: none;">
+						<div class="space-y-2">
+							<label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for=":r1:-form-item">Email</label><input class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm" placeholder="Your email" name="email" id=":r1:-form-item" aria-describedby=":r1:-form-item-description" aria-invalid="false" value=""></div>
+					</div>
+					<div style="opacity: 1; transform: none;">
+						<div class="space-y-2">
+							<label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for=":r2:-form-item">Subject</label><input class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm" placeholder="Subject" name="subject" id=":r2:-form-item" aria-describedby=":r2:-form-item-description" aria-invalid="false" value=""></div>
+					</div>
+					<div style="opacity: 1; transform: none;">
+						<div class="space-y-2">
+							<label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for=":r3:-form-item">Message</label>
+							<textarea class="flex w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm min-h-[120px]" placeholder="Your message" name="message" id=":r3:-form-item" aria-describedby=":r3:-form-item-description" aria-invalid="false"></textarea>
+						</div>
+					</div>
+					<div style="opacity: 1; transform: none;">
+						<button class="cursor-pointer inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 text-primary-foreground h-10 px-4 py-2 w-full bg-primary hover:bg-primary/90" type="submit">Send Message</button>
+					</div>
+				</form>
+			</div>
+			<div class="md:w-1/2" style="opacity: 1;">
+				<div class="mb-10" style="opacity: 1; transform: none;">
+					<h3 class="text-2xl font-semibold mb-6">Contact Information</h3>
+					<div class="space-y-4">
+						<div class="flex items-start">
+							<div class="bg-primary bg-opacity-10 p-3 rounded-full mr-4 h-11 w-11 flex justify-center items-center">
+								<i class="fa-solid fa-location-dot text-white"></i>
+							</div>
+							<div>
+								<h4 class="font-medium">Location</h4>
+								<p class="text-neutral">{{ location }}</p>
+							</div>
+						</div>
+						<div class="flex items-start">
+							<div class="bg-primary bg-opacity-10 p-3 rounded-full mr-4 h-11 w-11 flex justify-center items-center">
+								<i class="fa-solid fa-envelope text-white"></i>
+							</div>
+							<div>
+								<h4 class="font-medium">Email</h4>
+								<p class="text-neutral">{{ email }}</p>
+							</div>
+						</div>
+						<div class="flex items-start">
+							<div class="bg-primary bg-opacity-10 p-3 rounded-full mr-4 h-11 w-11 flex justify-center items-center">
+								<i class="fa-solid fa-phone text-white"></i>
+							</div>
+							<div>
+								<h4 class="font-medium">Phone</h4>
+								<p class="text-neutral">{{ phone }}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div style="opacity: 1; transform: none;">
+					<h3 class="text-2xl font-semibold mb-6">Follow Me</h3>
+					<div class="flex space-x-4">
+						{% for social in socials %}
+							<a href="{{ social.link }}" target="_BLANK" class="bg-primary hover:bg-primary/90 flex justify-center items-center h-11 w-11 bg-opacity-10 p-3 rounded-full text-primary hover:bg-primary hover:text-white transition-colors" aria-label="{{ social.label }}">
+								<i class="fa-brands {{ social.icon }} text-white"></i>
+							</a>
+						{% endfor %}
+					</div>
+				</div>
+				<div class="mt-10" style="opacity: 1; transform: none;">
+					<div class="relative rounded-xl overflow-hidden shadow-lg">
+						<div class="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent z-10"></div>
+						<img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=600&amp;h=300" alt="Developer working space" class="rounded-xl w-full h-48 object-cover">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ firstName }} {{ lastName }}'s Portfolio{% endblock %}
+
+{% block body %}
+    {% include "header.html.twig" %}
+	<main class="flex-grow" data-controller="scroll">
+        {% include "hero.html.twig" %}
+        {% include "about.html.twig" %}
+        {% include "experience.html.twig" %}
+        {% include "project.html.twig" %}
+        {% include "contact.html.twig" %}
+    </main>
+    {% include "footer.html.twig" %}
+{% endblock %}
