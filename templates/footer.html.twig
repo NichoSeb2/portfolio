@@ -11,33 +11,33 @@
 
 			<div class="flex flex-col md:flex-row gap-8 md:gap-12">
 				<div>
-					<h4 class="font-semibold mb-3">Quick Links</h4>
+					<h4 class="font-semibold mb-3">{{ 'footer.links'|trans({}, 'globals') }}</h4>
 					<ul class="space-y-2">
 						<li>
 							<a href="#about" class="text-gray-400 hover:text-primary transition-colors">
-								About
+								{{ 'nav.about'|trans({}, 'globals') }}
 							</a>
 						</li>
 						<li>
 							<a href="#experience" class="text-gray-400 hover:text-primary transition-colors">
-								Experience
+								{{ 'nav.experience'|trans({}, 'globals') }}
 							</a>
 						</li>
 						<li>
 							<a href="#project" class="text-gray-400 hover:text-primary transition-colors">
-								Projects
+								{{ 'nav.projects'|trans({}, 'globals') }}
 							</a>
 						</li>
 						<li>
 							<a href="#contact" class="text-gray-400 hover:text-primary transition-colors">
-								Contact
+								{{ 'nav.contact'|trans({}, 'globals') }}
 							</a>
 						</li>
 					</ul>
 				</div>
 
 				<div>
-					<h4 class="font-semibold mb-3">Social Media</h4>
+					<h4 class="font-semibold mb-3">{{ 'footer.socials'|trans({}, 'globals') }}</h4>
 					<ul class="space-y-2">
 						{% for social in socials %}
 							<li>
@@ -54,7 +54,7 @@
 		<div class="border-t border-gray-700 mt-8 pt-8 text-center">
 			<p class="text-gray-400">&copy;
 				{{ "now"|date("Y") }}
-				{{ firstName }} {{ lastName }}. All rights reserved.</p>
+				{{ firstName }} {{ lastName }}. {{ 'footer.copyrights'|trans({}, 'globals') }}</p>
 		</div>
 	</div>
 </footer>

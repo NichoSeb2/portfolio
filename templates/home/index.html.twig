@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ firstName }} {{ lastName }}'s Portfolio{% endblock %}
+{% block title %}{{ 'title'|trans({'%firstName%': firstName, '%lastName%': lastName}, 'globals') }}{% endblock %}
 
 {% block body %}
     {% include "header.html.twig" %}
