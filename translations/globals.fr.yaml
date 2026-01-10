@@ -1,0 +1,53 @@
+title: "Portfolio de %firstName% %lastName%"
+download: "Télécharger le CV"
+languages:
+  fr: Français
+  en: Anglais
+hero:
+  title: "Bonjour, je suis"
+  contact: "Me contacter"
+  projects: "Voir mes projets"
+nav:
+  about: "À propos"
+  experience: "Expérience"
+  projects: "Projets"
+  contact: "Contact"
+about:
+  title: "À propos de moi"
+  based: "%title% basé à %location%"
+  name: "Nom :"
+  email: "Email :"
+  from: "Originaire de :"
+  availability: "Disponibilité :"
+contact:
+  title: "Me contacter"
+  headline: "Vous avez un projet en tête ou souhaitez en savoir plus sur mes services ? N'hésitez pas à me contacter !"
+  form:
+    name:
+      label: "Nom :"
+      placeholder: "Votre nom"
+    email:
+      label: "Email :"
+      placeholder: "Votre email"
+    subject:
+      label: "Sujet :"
+      placeholder: "Sujet"
+    message:
+      label: "Message :"
+      placeholder: "Votre message"
+    submit: "Envoyer le message"
+  info:
+    title: "Informations de contact"
+    location: "Localisation"
+    email: "Email"
+    phone: "Téléphone"
+    follow: "Suivez-moi"
+experience:
+  title: "Expérience professionnelle"
+  now: "Actuellement"
+projects:
+  title: "Projets"
+footer:
+  links: "Liens rapides"
+  socials: "Réseaux sociaux"
+  copyrights: "Tous droits réservés."

@@ -1,10 +1,15 @@
 {
-  "scripts": {
-		"prepare": "husky"
-	},
-  "dependencies": {
-    "@commitlint/cli": "^19.8.1",
-    "@commitlint/config-conventional": "^19.8.1",
-    "husky": "^9.1.7"
-  }
+    "scripts": {
+        "prepare": "husky",
+        "postinstall": "mkdir -p assets/vendor/flag-icon && cp -r node_modules/flag-icons/css assets/vendor/flag-icon/ && cp -r node_modules/flag-icons/flags assets/vendor/flag-icon/ && php bin/console tailwind:build && php bin/console asset-map:compile"
+    },
+    "dependencies": {
+        "@commitlint/cli": "^19.8.1",
+        "@commitlint/config-conventional": "^19.8.1",
+        "@fortawesome/fontawesome-svg-core": "^6.7.2",
+        "@fortawesome/free-brands-svg-icons": "^6.7.2",
+        "@fortawesome/free-solid-svg-icons": "^6.7.2",
+        "flag-icons": "^7.5.0",
+        "husky": "^9.1.7"
+    }
 }

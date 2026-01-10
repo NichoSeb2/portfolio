@@ -1,0 +1,53 @@
+title: "%firstName% %lastName%'s Portfolio"
+download: "Download CV"
+languages:
+  fr: Français
+  en: English
+hero:
+  title: "Hello, I'm"
+  contact: "Get in touch"
+  projects: "View work"
+nav:
+  about: "About"
+  experience: "Experience"
+  projects: "Projects"
+  contact: "Contact"
+about:
+  title: "About Me"
+  based: "%title% based in %location%"
+  name: "Name:"
+  email: "Email:"
+  from: "From:"
+  availability: "Availability:"
+contact:
+  title: "Get In Touch"
+  headline: "Have a project in mind or want to know more about my services? Feel free to reach out!"
+  form:
+    name:
+      label: "Name:"
+      placeholder: "Your name"
+    email:
+      label: "Email:"
+      placeholder: "Your email"
+    subject:
+      label: "Subject:"
+      placeholder: "Subject"
+    message:
+      label: "Message:"
+      placeholder: "Your message"
+    submit: "Send Message"
+  info:
+    title: "Contact Information"
+    location: "Location"
+    email: "Email"
+    phone: "Phone"
+    follow: "Follow Me"
+experience:
+  title: "Work Experience"
+  now: "Present"
+projects:
+  title: "Projects"
+footer:
+  links: "Quick Links"
+  socials: "Social Media"
+  copyrights: "All rights reserved."

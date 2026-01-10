@@ -1,0 +1,60 @@
+<footer class="bg-gray-900 text-white py-10">
+	<div class="container mx-auto px-4">
+		<div class="flex flex-col md:flex-row justify-between items-center">
+			<div class="mb-6 md:mb-0">
+				<a href="#hero" class="text-2xl font-bold flex items-center">
+					<span class="text-primary">{{ firstName }}</span>
+					<span class="text-white ml-1">{{ lastName }}</span>
+				</a>
+				<p class="mt-2 text-gray-400">{{ title }}</p>
+			</div>
+
+			<div class="flex flex-col md:flex-row gap-8 md:gap-12">
+				<div>
+					<h4 class="font-semibold mb-3">{{ 'footer.links'|trans({}, 'globals') }}</h4>
+					<ul class="space-y-2">
+						<li>
+							<a href="#about" class="text-gray-400 hover:text-primary transition-colors">
+								{{ 'nav.about'|trans({}, 'globals') }}
+							</a>
+						</li>
+						<li>
+							<a href="#experience" class="text-gray-400 hover:text-primary transition-colors">
+								{{ 'nav.experience'|trans({}, 'globals') }}
+							</a>
+						</li>
+						<li>
+							<a href="#project" class="text-gray-400 hover:text-primary transition-colors">
+								{{ 'nav.projects'|trans({}, 'globals') }}
+							</a>
+						</li>
+						<li>
+							<a href="#contact" class="text-gray-400 hover:text-primary transition-colors">
+								{{ 'nav.contact'|trans({}, 'globals') }}
+							</a>
+						</li>
+					</ul>
+				</div>
+
+				<div>
+					<h4 class="font-semibold mb-3">{{ 'footer.socials'|trans({}, 'globals') }}</h4>
+					<ul class="space-y-2">
+						{% for social in socials %}
+							<li>
+								<a href="{{ social.link }}" target="_BLANK" class="text-gray-400 hover:text-primary transition-colors">
+									{{ social.label }}
+								</a>
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div class="border-t border-gray-700 mt-8 pt-8 text-center">
+			<p class="text-gray-400">&copy;
+				{{ "now"|date("Y") }}
+				{{ firstName }} {{ lastName }}. {{ 'footer.copyrights'|trans({}, 'globals') }}</p>
+		</div>
+	</div>
+</footer>

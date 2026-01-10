@@ -75,5 +75,6 @@ RUN echo 'alias sc="php bin/console"' >> /home/container/.bashrc
 RUN echo 'alias code:check="php vendor/bin/php-cs-fixer check --diff"' >> /home/container/.bashrc
 RUN echo 'alias code:fix="php vendor/bin/php-cs-fixer fix"' >> /home/container/.bashrc
 RUN echo 'alias code:analyze="php vendor/bin/phpstan analyze"' >> /home/container/.bashrc
+RUN echo 'alias style:watch="php bin/console tailwind:build -w"' >> /home/container/.bashrc
 
 WORKDIR /var/www/html
