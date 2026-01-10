@@ -9,7 +9,40 @@
 			<a href="#experience" class="font-medium transition-colors hover:text-primary leading-10" style="opacity: 1; transform: none;">{{ 'nav.experience'|trans({}, 'globals') }}</a>
 			<a href="#project" class="font-medium transition-colors hover:text-primary leading-10" style="opacity: 1; transform: none;">{{ 'nav.projects'|trans({}, 'globals') }}</a>
 			<a href="#contact" class="font-medium transition-colors hover:text-primary leading-10" style="opacity: 1; transform: none;">{{ 'nav.contact'|trans({}, 'globals') }}</a>
-			
+
+			<div style="opacity: 1; transform: none;" class="flex justify-center items-center">
+				<div class="relative">
+					<button data-controller="language" class="justify-center cursor-pointer whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:text-accent-foreground h-9 rounded-md flex items-center gap-2 px-3 py-2 hover:bg-gray-100 transition-colors">
+						{% for locale in ['en', 'fr'] %}
+							{% set fi = {'en': 'gb', 'fr': 'fr'}[locale] %}
+
+							{% if app.request.locale == locale %}
+								<span class="fi fi-{{ fi }}"></span>
+							{% endif %}
+						{% endfor %}
+						<i id="languageMenuArrowDown" class="fa-solid fa-chevron-down"></i>
+						<i id="languageMenuArrowUp" class="fa-solid fa-chevron-up"></i>
+					</button>
+					<div id="languageMenu" class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 z-50 hidden" style="opacity: 1; transform: none;">
+						<div class="py-2">
+							{% for locale in ['en', 'fr'] %}
+								{% set fi = {'en': 'gb', 'fr': 'fr'}[locale] %}
+
+								<a href="{{ url('app_change_locale', {'_locale': locale}) }}" class="w-full cursor-pointer px-4 py-2 text-left text-sm hover:bg-gray-50 transition-colors flex items-center gap-3 {{ app.request.locale == locale ? 'bg-primary/10 text-primary' : 'text-gray-700' }}">
+									<span class="fi fi-{{ fi }}"></span>
+									<span class="font-medium">{{ ('languages.' ~ locale)|trans({}, 'globals') }}</span>
+
+									{% if app.request.locale == locale %}
+										<div class="ml-auto w-2 h-2 bg-primary rounded-full"></div>
+									{% endif %}
+								</a>
+							{% endfor %}
+						</div>
+					</div>
+					{# <div class="fixed inset-0 z-40"></div> #}
+				</div>
+			</div>
+
 			<div style="opacity: 1; transform: none;">
 				<button class="cursor-pointer inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 text-primary-foreground h-10 px-4 py-2 bg-primary hover:bg-primary/90">
 					<i class="fa-solid fa-download text-primary-foreground"></i>

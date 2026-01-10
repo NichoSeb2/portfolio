@@ -1,5 +1,8 @@
 title: "%firstName% %lastName%'s Portfolio"
 download: "Download CV"
+languages:
+  fr: Français
+  en: English
 hero:
   title: "Hello, I'm"
   contact: "Get in touch"
@@ -15,7 +18,7 @@ about:
   name: "Name:"
   email: "Email:"
   from: "From:"
-  availability: "Availability"
+  availability: "Availability:"
 contact:
   title: "Get In Touch"
   headline: "Have a project in mind or want to know more about my services? Feel free to reach out!"
@@ -43,7 +46,7 @@ experience:
   title: "Work Experience"
   now: "Present"
 projects:
-  title: "Featured Projects"
+  title: "Projects"
 footer:
   links: "Quick Links"
   socials: "Social Media"
