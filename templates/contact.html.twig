@@ -7,7 +7,7 @@
 		</div>
 		<div class="flex flex-col md:flex-row gap-12">
 			<div class="md:w-1/2" style="opacity: 1;">
-				<form class="space-y-6">
+				<form class="space-y-6" method="post">
 					<div style="opacity: 1; transform: none;">
 						<div class="space-y-2">
 							<label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for=":r0:-form-item">{{ 'contact.form.name.label'|trans({}, 'globals') }}</label>
@@ -47,7 +47,7 @@
 							</div>
 							<div>
 								<h4 class="font-medium">{{ 'contact.info.location'|trans({}, 'globals') }}</h4>
-								<p class="text-neutral">{{ location }}</p>
+								<p class="text-neutral">{{ user.location }}</p>
 							</div>
 						</div>
 						<div class="flex items-start">
@@ -56,24 +56,26 @@
 							</div>
 							<div>
 								<h4 class="font-medium">{{ 'contact.info.email'|trans({}, 'globals') }}</h4>
-								<p class="text-neutral">{{ email }}</p>
+								<p class="text-neutral">{{ user.email }}</p>
 							</div>
 						</div>
-						<div class="flex items-start">
-							<div class="bg-primary bg-opacity-10 p-3 rounded-full mr-4 h-11 w-11 flex justify-center items-center">
-								<i class="fa-solid fa-phone text-white"></i>
+						{% if user.phone != null and user.phone != "" %}
+							<div class="flex items-start">
+								<div class="bg-primary bg-opacity-10 p-3 rounded-full mr-4 h-11 w-11 flex justify-center items-center">
+									<i class="fa-solid fa-phone text-white"></i>
+								</div>
+								<div>
+									<h4 class="font-medium">{{ 'contact.info.phone'|trans({}, 'globals') }}</h4>
+									<p class="text-neutral">{{ user.phone }}</p>
+								</div>
 							</div>
-							<div>
-								<h4 class="font-medium">{{ 'contact.info.phone'|trans({}, 'globals') }}</h4>
-								<p class="text-neutral">{{ phone }}</p>
-							</div>
-						</div>
+						{% endif %}
 					</div>
 				</div>
 				<div style="opacity: 1; transform: none;">
 					<h3 class="text-2xl font-semibold mb-6">{{ 'contact.info.follow'|trans({}, 'globals') }}</h3>
 					<div class="flex space-x-4">
-						{% for social in socials %}
+						{% for social in user.socials %}
 							<a href="{{ social.link }}" target="_BLANK" class="bg-primary hover:bg-primary/90 flex justify-center items-center h-11 w-11 bg-opacity-10 p-3 rounded-full text-primary hover:bg-primary hover:text-white transition-colors" aria-label="{{ social.label }}">
 								<i class="fa-brands {{ social.icon }} text-white"></i>
 							</a>

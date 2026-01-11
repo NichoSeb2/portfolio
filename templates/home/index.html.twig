@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ 'title'|trans({'%firstName%': firstName, '%lastName%': lastName}, 'globals') }}{% endblock %}
+{% block title %}{{ 'title'|trans({'%firstName%': user.firstName, '%lastName%': user.lastName}, 'globals') }}{% endblock %}
 
 {% block body %}
     {% include "header.html.twig" %}
