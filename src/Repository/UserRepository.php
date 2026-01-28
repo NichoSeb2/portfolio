@@ -29,4 +29,14 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
 		$this->getEntityManager()->persist($user);
 		$this->getEntityManager()->flush();
 	}
+
+	public function findOneByDomain(string $domain): ?User
+	{
+		return $this->createQueryBuilder('e')
+			->where('e.domain LIKE :domain')
+			->setParameter('domain', '%' . $domain . '%')
+			->setMaxResults(1)
+			->getQuery()
+			->getOneOrNullResult();
+	}
 }

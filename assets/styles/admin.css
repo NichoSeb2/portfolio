@@ -1,0 +1,17 @@
+:root {
+	--color-primary: #2ac663;
+
+	--body-max-width: 100%;
+	--button-primary-bg: var(--color-primary);
+	--button-primary-hover-bg: color-mix(in oklab, var(--color-primary) 90%, transparent);
+	--form-type-check-input-checked-bg: var(--color-primary);
+}
+
+body.ea .content-search > form {
+	display: none;
+}
+
+.sidebar {
+	box-shadow: none;
+	background-color: var(--color-gray-50);
+}
