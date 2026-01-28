@@ -6,6 +6,7 @@ use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Attribute\Route;
 
 final class HomeController extends AbstractController
@@ -13,9 +14,11 @@ final class HomeController extends AbstractController
 	#[Route('/', name: 'app_home', methods: ['GET'])]
 	public function index(Request $request, UserRepository $userRepository): Response
 	{
-		$user = $userRepository->findOneBy([
-			'domain' => $request->getHost(),
-		]);
+		$user = $userRepository->findOneByDomain($request->getHost());
+
+		if (is_null($user)) {
+			throw new NotFoundHttpException();
+		}
 
 		return $this->render('home/index.html.twig', ['user' => $user]);
 	}
