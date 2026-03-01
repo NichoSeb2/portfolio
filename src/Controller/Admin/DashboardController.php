@@ -26,7 +26,7 @@ class DashboardController extends AbstractDashboardController
 	public function configureDashboard(): Dashboard
 	{
 		return Dashboard::new()
-			->setTitle('Portfolio dashboard')
+			->setTitle('<a href="' . $this->generateUrl('app_home') . '">Portfolio dashboard</a>')
 			->disableDarkMode()
 			->setDefaultColorScheme(ColorScheme::LIGHT);
 	}

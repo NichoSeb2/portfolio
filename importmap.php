@@ -42,4 +42,7 @@ return [
     '@fortawesome/free-brands-svg-icons' => [
         'version' => '6.7.2',
     ],
+    '@fortawesome/free-regular-svg-icons' => [
+        'version' => '7.1.0',
+    ],
 ];

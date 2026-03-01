@@ -4,4 +4,7 @@
 	--color-primary: #2ac663;
 	--color-secondary: #dbdbdb;
 	--color-primary-foreground: #fafcff;
+
+	--color-danger: #ef4444;
+	--color-danger-foreground: #fafaf9;
 }
