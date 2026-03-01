@@ -1,6 +1,7 @@
 import { library, dom } from '@fortawesome/fontawesome-svg-core';
-import { faEnvelope, faLocationDot, faPhone, faDownload, faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faLocationDot, faPhone, faDownload, faChevronDown, faChevronUp, faGear, faXmark, faSliders, faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import { faGithub, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
+import { faEye, faUser } from '@fortawesome/free-regular-svg-icons';
 
 library.add(faGithub);
 library.add(faLinkedinIn);
@@ -10,4 +11,10 @@ library.add(faPhone);
 library.add(faDownload);
 library.add(faChevronDown);
 library.add(faChevronUp);
+library.add(faGear);
+library.add(faUser);
+library.add(faEye);
+library.add(faXmark);
+library.add(faSliders);
+library.add(faArrowRightFromBracket);
 dom.watch();

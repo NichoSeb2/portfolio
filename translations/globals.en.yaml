@@ -47,6 +47,20 @@ experience:
   now: "Present"
 projects:
   title: "Projects"
+commandPalette:
+  title: "Portfolio settings"
+  description: Manage your account and display preferences.
+  tabs:
+    login:
+      label: Login
+    config:
+      label: Display preferences
+  sections:
+    login:
+      email: 
+        label: Email
+      password: 
+        label: Password
 footer:
   links: "Quick Links"
   socials: "Social Media"

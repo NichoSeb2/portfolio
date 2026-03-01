@@ -10,9 +10,12 @@ use App\Entity\User;
 use DateTimeImmutable;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class AppFixtures extends Fixture
 {
+	public function __construct(private UserPasswordHasherInterface $passwordHasher) {}
+
 	public function load(ObjectManager $manager): void
 	{
 		$github = new Social();
@@ -78,7 +81,10 @@ class AppFixtures extends Fixture
 		$user = new User();
 		$user
 			->setDomain("localhost")
-			->setPassword("john.doe@example.com")
+			->setPassword($this->passwordHasher->hashPassword(
+				$user,
+				'test123',
+			))
 			->setEmail("john.doe@example.com")
 			->setPhone("000000")
 			->setFirstName("John")

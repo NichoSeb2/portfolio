@@ -3,6 +3,7 @@
 use Doctrine\Bundle\DoctrineBundle\DoctrineBundle;
 use Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle;
 use Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle;
+use EasyCorp\Bundle\EasyAdminBundle\EasyAdminBundle;
 use Symfony\Bundle\DebugBundle\DebugBundle;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Bundle\MakerBundle\MakerBundle;
@@ -12,6 +13,7 @@ use Symfony\Bundle\TwigBundle\TwigBundle;
 use Symfony\Bundle\WebProfilerBundle\WebProfilerBundle;
 use Symfony\UX\StimulusBundle\StimulusBundle;
 use Symfony\UX\Turbo\TurboBundle;
+use Symfony\UX\TwigComponent\TwigComponentBundle;
 use Symfonycasts\TailwindBundle\SymfonycastsTailwindBundle;
 use Twig\Extra\TwigExtraBundle\TwigExtraBundle;
 
@@ -30,4 +32,6 @@ return [
 	MakerBundle::class => ['dev' => true],
 	SymfonycastsTailwindBundle::class => ['all' => true],
 	DoctrineFixturesBundle::class => ['dev' => true, 'test' => true],
+	TwigComponentBundle::class => ['all' => true],
+	EasyAdminBundle::class => ['all' => true],
 ];

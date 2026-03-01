@@ -2,6 +2,12 @@
 
 {% block title %}{{ 'title'|trans({'%firstName%': user.firstName, '%lastName%': user.lastName}, 'globals') }}{% endblock %}
 
+{% block popup %}
+    <span id="commandPalette" data-controller="commandPalette" class="hidden">
+        {% include "commandPalette.html.twig" %}
+    </span>
+{% endblock %}
+
 {% block body %}
     {% include "header.html.twig" %}
 	<main class="flex-grow" data-controller="scroll">

@@ -1,0 +1,26 @@
+:root {
+	--color-primary: #2ac663;
+
+	--body-max-width: 100%;
+	--button-primary-bg: var(--color-primary);
+	--button-primary-hover-bg: color-mix(in oklab, var(--color-primary) 90%, transparent);
+	--button-primary-active-bg: var(--color-primary);
+	--button-primary-border-color: color-mix(in oklab, var(--color-primary) 15%, transparent);
+	--button-primary-hover-border-color: color-mix(in oklab, var(--color-primary) 15%, transparent);
+	--button-focus-outline-color: var(--color-primary);
+	--form-type-check-input-checked-bg: var(--color-primary);
+}
+
+body.ea .content-search > form {
+	display: none;
+}
+
+.sidebar {
+	box-shadow: none;
+	background-color: var(--color-gray-50);
+}
+
+#header-logo > :first-child.logo,
+#responsive-header-logo > :first-child.responsive-logo {
+	display: none;
+}

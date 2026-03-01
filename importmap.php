@@ -16,6 +16,10 @@ return [
         'path' => './assets/app.js',
         'entrypoint' => true,
     ],
+    'admin' => [
+        'path' => './assets/admin.js',
+        'entrypoint' => true,
+    ],
     '@hotwired/stimulus' => [
         'version' => '3.2.2',
     ],
@@ -37,5 +41,8 @@ return [
     ],
     '@fortawesome/free-brands-svg-icons' => [
         'version' => '6.7.2',
+    ],
+    '@fortawesome/free-regular-svg-icons' => [
+        'version' => '7.1.0',
     ],
 ];
